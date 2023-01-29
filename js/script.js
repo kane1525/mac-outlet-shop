@@ -54,8 +54,9 @@ function getRandomInt(min, max) {
   return Math.floor(Math.random() * (max - min)) + min;
 }
 
-// Рендерим карточки
-items.forEach((item) => {
+// Функция рендер карточки
+
+function renderCard(item) {
   const card = document.createElement('div');
   card.innerHTML = `
       <button class="card__favourite product__favourite-button">
@@ -122,8 +123,12 @@ items.forEach((item) => {
       </div>
   `;
   card.classList.add('product');
+  productClickHandler(card);
   productList.appendChild(card);
-});
+}
+
+// Рендерим карточки
+items.forEach(renderCard);
 
 // Закрываем и открываем аккордеон
 filtersCategories.forEach((category) => {
@@ -155,8 +160,7 @@ const productPopupStock = productPopup.querySelector(
 );
 const productPopupInfo = productPopup.querySelector('.product-popup__info');
 
-// вешаем обработчик клика на каждый продукт
-products.forEach((product) => {
+function productClickHandler(product) {
   // делаем, что б поп-ап не открывался при клике на "добавить в корзину"
   // или на "добавить в избранное"
   product.querySelector('.button').addEventListener('click', (e) => {
@@ -228,7 +232,7 @@ products.forEach((product) => {
     // Не разрешаем прокручивать основной сайт
     body.style.overflow = 'hidden';
   });
-});
+}
 
 // логика закрытия поп-апа продукта
 productPopup.addEventListener('click', (e) => {
@@ -271,3 +275,180 @@ mobileFiltersPopup.addEventListener('click', (e) => {
     }, 300);
   }
 });
+
+// Логика фильтров
+const checkboxes = document.querySelectorAll('.filters__checkbox-input');
+const filterBtns = document.querySelectorAll('.filters__checkbox');
+const filterTextInputs = document.querySelectorAll('.filters__textfield-input');
+const searchInput = document.querySelector('.searchbar__input');
+// Сделали хранилище
+const currentFilters = {
+  search: '',
+  from: 0,
+  to: Infinity,
+  color: [],
+  storage: [],
+  os: [],
+  displayBetween: [],
+};
+
+const newProductsArr = items.map((item) => {
+  const res = {
+    ...item,
+    get displayBetween() {
+      if (this.display >= 2 && this.display < 5) {
+        return '2-5';
+      } else if (this.display >= 5 && this.display < 7) {
+        return '5-7';
+      } else if (this.display >= 7 && this.display < 12) {
+        return '7-12';
+      } else if (this.display >= 12 && this.display < 16) {
+        return '12-16';
+      } else if (this.display >= 16) {
+        return '16-1000';
+      } else {
+        return 'none';
+      }
+    },
+  };
+  return res;
+});
+
+// назначили чекбоксам обработчик событий
+checkboxes.forEach((checkbox) => {
+  checkbox.addEventListener('change', handleButtonClick);
+});
+
+// обработчик клика по чекбоксам
+// если кликнули, изменяем наше хранилище
+// запускаем фильрацию
+function handleButtonClick(e) {
+  const currentCheckbox = e.currentTarget;
+  const key = currentCheckbox.closest('.filters__items-animation-wrapper')
+    .previousElementSibling.dataset.category;
+
+  const param = currentCheckbox.getAttribute('data-prop');
+
+  if (currentCheckbox.checked) {
+    currentFilters[key].push(param);
+    handleFilterPosts(currentFilters);
+  } else {
+    currentFilters[key] = currentFilters[key].filter((item) => item !== param);
+    handleFilterPosts(currentFilters);
+  }
+}
+
+// логика самой фильтрации
+// принимает хранилище
+const handleFilterPosts = (filters) => {
+  // создаем новый массив, что б не менять исходный
+  let filteredProducts = [...newProductsArr];
+  let filterKeys = Object.keys(filters);
+
+  filterKeys.forEach((key) => {
+    let filterValue = filters[key];
+    if (filterValue.length <= 0) {
+      return;
+    }
+
+    if (key === 'from') {
+      filteredProducts = filteredProducts.filter((product) => {
+        return Number(product.price) >= Number(filterValue);
+      });
+      productList.innerHTML = '';
+      filteredProducts.forEach(renderCard);
+      return;
+    }
+
+    if (key === 'to') {
+      filteredProducts = filteredProducts.filter((product) => {
+        return Number(product.price) <= Number(filterValue);
+      });
+      productList.innerHTML = '';
+      filteredProducts.forEach(renderCard);
+      return;
+    }
+
+    // ф-ция для поиска товаров по любому свойству
+    function iterate(product, keys) {
+      return keys.some((k) => {
+        if (
+          Array.isArray(product[k]) ||
+          typeof product[k] === 'string' ||
+          typeof product[k] === 'number'
+        ) {
+          return product[k]
+            .toString()
+            .toLowerCase()
+            .includes(filterValue.toLowerCase());
+        }
+        if (product[k] !== null && product[k].toString().includes(' Object')) {
+          return iterate(product[k], Object.keys(product[k]));
+        }
+      });
+    }
+
+    // фильтруем товары по поисковой строке
+    if (key === 'search') {
+      filteredProducts = filteredProducts.filter((product) => {
+        const keys = Object.keys(product);
+
+        return iterate(product, keys);
+      });
+      productList.innerHTML = '';
+      filteredProducts.forEach(renderCard);
+      return;
+    }
+
+    filteredProducts = filteredProducts.filter((product) => {
+      let productValue = product[key];
+      return Array.isArray(productValue)
+        ? productValue.some((val) =>
+            String(filterValue)
+              .toLowerCase()
+              .includes(String(val).toLowerCase())
+          )
+        : filterValue.includes(String(productValue));
+    });
+  });
+
+  productList.innerHTML = '';
+  filteredProducts.forEach(renderCard);
+};
+
+// обработка инпутов с ценой цены
+function handleCostInput(e) {
+  const currentInput = e.target;
+  const type = currentInput.dataset.category;
+  const maxValue = items.reduce((accum, nextvalue) => {
+    return nextvalue.price > accum ? nextvalue.price : accum;
+  }, 0);
+  const minValue = items.reduce((accum, nextvalue) => {
+    return nextvalue.price < accum ? nextvalue.price : accum;
+  }, Infinity);
+
+  setTimeout(() => {
+    if (Number(currentInput.value) < minValue) {
+      currentInput.value = minValue;
+    } else if (Number(currentInput.value) > maxValue) {
+      currentInput.value = maxValue;
+    }
+
+    currentFilters[type] = currentInput.value;
+    handleFilterPosts(currentFilters);
+  }, 1000);
+}
+
+filterTextInputs.forEach((input) => {
+  input.addEventListener('input', handleCostInput);
+});
+
+// обработка инпута с поиском
+function handleSearchInput(e) {
+  const currentInput = e.target;
+  const type = currentInput.dataset.category;
+  currentFilters[type] = currentInput.value;
+  handleFilterPosts(currentFilters);
+}
+
+searchInput.addEventListener('input', handleSearchInput);

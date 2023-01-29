@@ -131,6 +131,7 @@
             <input
               type="text"
               class="searchbar__input"
+              data-category="search"
               placeholder="Enter device name..."
               autocomplete="off"
               value="" />
@@ -259,6 +260,7 @@
                   type="number"
                   id="quantity"
                   name="quantity"
+                  data-category="from"
                   min="1"
                   max="5" />
               </div>
@@ -271,12 +273,13 @@
                   type="number"
                   id="quantity1"
                   name="quantity"
+                  data-category="to"
                   min="1"
                   max="5" />
               </div>
             </div>
           </div>
-          <div class="filters__category">
+          <div class="filters__category" data-category="color">
             <p class="filters__category-name">Color</p>
             <div class="filters__arrow-wrapper">
               <svg
@@ -296,6 +299,7 @@
                     type="checkbox"
                     class="filters__checkbox-input"
                     name="policy"
+                    data-prop="Red"
                     id="red" />
                   <label
                     class="custom-checkbox__label filters__checkbox-label"
@@ -308,6 +312,7 @@
                     type="checkbox"
                     class="filters__checkbox-input"
                     name="policy"
+                    data-prop="green"
                     id="green" />
                   <label
                     class="custom-checkbox__label filters__checkbox-label"
@@ -320,6 +325,7 @@
                     type="checkbox"
                     class="filters__checkbox-input"
                     name="policy"
+                    data-prop="black"
                     id="black" />
                   <label
                     class="custom-checkbox__label filters__checkbox-label"
@@ -332,6 +338,7 @@
                     type="checkbox"
                     class="filters__checkbox-input"
                     name="policy"
+                    data-prop="white"
                     id="white" />
                   <label
                     class="custom-checkbox__label filters__checkbox-label"
@@ -344,6 +351,7 @@
                     type="checkbox"
                     class="filters__checkbox-input"
                     name="policy"
+                    data-prop="blue"
                     id="blue" />
                   <label
                     class="custom-checkbox__label filters__checkbox-label"
@@ -356,6 +364,7 @@
                     type="checkbox"
                     class="filters__checkbox-input"
                     name="policy"
+                    data-prop="Space Grey"
                     id="grey" />
                   <label
                     class="custom-checkbox__label filters__checkbox-label"
@@ -368,11 +377,12 @@
                     type="checkbox"
                     class="filters__checkbox-input"
                     name="policy"
-                    id="red" />
+                    data-prop="gold"
+                    id="gold" />
                   <label
                     class="custom-checkbox__label filters__checkbox-label"
-                    for="red">
-                    <p>Red</p>
+                    for="gold">
+                    <p>Gold</p>
                   </label>
                 </li>
                 <li class="filters__checkbox">
@@ -380,6 +390,7 @@
                     type="checkbox"
                     class="filters__checkbox-input"
                     name="policy"
+                    data-prop="yellow"
                     id="Yellow" />
                   <label
                     class="custom-checkbox__label filters__checkbox-label"
@@ -390,7 +401,7 @@
               </ul>
             </div>
           </div>
-          <div class="filters__category">
+          <div class="filters__category" data-category="storage">
             <p class="filters__category-name">Memory</p>
             <div class="filters__arrow-wrapper">
               <svg
@@ -410,6 +421,7 @@
                     type="checkbox"
                     class="filters__checkbox-input"
                     name="policy"
+                    data-prop="32"
                     id="32 Gb" />
                   <label
                     class="custom-checkbox__label filters__checkbox-label"
@@ -422,6 +434,7 @@
                     type="checkbox"
                     class="filters__checkbox-input"
                     name="policy"
+                    data-prop="64"
                     id="64 Gb" />
                   <label
                     class="custom-checkbox__label filters__checkbox-label"
@@ -434,6 +447,7 @@
                     type="checkbox"
                     class="filters__checkbox-input"
                     name="policy"
+                    data-prop="128"
                     id="128 Gb" />
                   <label
                     class="custom-checkbox__label filters__checkbox-label"
@@ -446,6 +460,7 @@
                     type="checkbox"
                     class="filters__checkbox-input"
                     name="policy"
+                    data-prop="256"
                     id="256 Gb" />
                   <label
                     class="custom-checkbox__label filters__checkbox-label"
@@ -458,6 +473,7 @@
                     type="checkbox"
                     class="filters__checkbox-input"
                     name="policy"
+                    data-prop="512"
                     id="512 Gb" />
                   <label
                     class="custom-checkbox__label filters__checkbox-label"
@@ -470,6 +486,7 @@
                     type="checkbox"
                     class="filters__checkbox-input"
                     name="policy"
+                    data-prop="1024"
                     id="1 TB" />
                   <label
                     class="custom-checkbox__label filters__checkbox-label"
@@ -482,6 +499,7 @@
                     type="checkbox"
                     class="filters__checkbox-input"
                     name="policy"
+                    data-prop="2048"
                     id="2 TB" />
                   <label
                     class="custom-checkbox__label filters__checkbox-label"
@@ -494,6 +512,7 @@
                     type="checkbox"
                     class="filters__checkbox-input"
                     name="policy"
+                    data-prop="4096"
                     id="4 TB" />
                   <label
                     class="custom-checkbox__label filters__checkbox-label"
@@ -504,7 +523,7 @@
               </ul>
             </div>
           </div>
-          <div class="filters__category">
+          <div class="filters__category" data-category="os">
             <p class="filters__category-name">OS</p>
             <div class="filters__arrow-wrapper">
               <svg
@@ -524,6 +543,7 @@
                     type="checkbox"
                     class="filters__checkbox-input"
                     name="policy"
+                    data-prop="IOS"
                     id="IOS" />
                   <label
                     class="custom-checkbox__label filters__checkbox-label"
@@ -536,6 +556,7 @@
                     type="checkbox"
                     class="filters__checkbox-input"
                     name="policy"
+                    data-prop="macOS"
                     id="Mac OS" />
                   <label
                     class="custom-checkbox__label filters__checkbox-label"
@@ -548,6 +569,7 @@
                     type="checkbox"
                     class="filters__checkbox-input"
                     name="policy"
+                    data-prop="tvOS"
                     id="tvOS" />
                   <label
                     class="custom-checkbox__label filters__checkbox-label"
@@ -560,6 +582,7 @@
                     type="checkbox"
                     class="filters__checkbox-input"
                     name="policy"
+                    data-prop="watchOS"
                     id="Watch OS" />
                   <label
                     class="custom-checkbox__label filters__checkbox-label"
@@ -570,7 +593,7 @@
               </ul>
             </div>
           </div>
-          <div class="filters__category">
+          <div class="filters__category" data-category="displayBetween">
             <p class="filters__category-name">Display</p>
             <div class="filters__arrow-wrapper">
               <svg
@@ -590,6 +613,7 @@
                     type="checkbox"
                     class="filters__checkbox-input"
                     name="policy"
+                    data-prop="2-5"
                     id="2 - 5 inch" />
                   <label
                     class="custom-checkbox__label filters__checkbox-label"
@@ -602,6 +626,7 @@
                     type="checkbox"
                     class="filters__checkbox-input"
                     name="policy"
+                    data-prop="5-7"
                     id="5 - 7 inch" />
                   <label
                     class="custom-checkbox__label filters__checkbox-label"
@@ -614,6 +639,7 @@
                     type="checkbox"
                     class="filters__checkbox-input"
                     name="policy"
+                    data-prop="7-12"
                     id="7 - 12 inch" />
                   <label
                     class="custom-checkbox__label filters__checkbox-label"
@@ -626,6 +652,7 @@
                     type="checkbox"
                     class="filters__checkbox-input"
                     name="policy"
+                    data-prop="12-16"
                     id="12 - 16 inch" />
                   <label
                     class="custom-checkbox__label filters__checkbox-label"
@@ -638,6 +665,7 @@
                     type="checkbox"
                     class="filters__checkbox-input"
                     name="policy"
+                    data-prop="16-1000"
                     id="+16 inch" />
                   <label
                     class="custom-checkbox__label filters__checkbox-label"
@@ -771,7 +799,7 @@
             </div>
           </div>
         </div>
-        <div class="filters__category">
+        <div class="filters__category" data-category="color">
           <p class="filters__category-name">Color</p>
           <div class="filters__arrow-wrapper">
             <svg
