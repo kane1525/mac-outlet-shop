@@ -1,3 +1,5 @@
+const body = document.querySelector('body');
+const searchbarBtns = document.querySelectorAll('.searchbar__button');
 const filtersBtn = document.querySelector('.searchbar__button_filters');
 const settingsBtn = document.querySelector('.searchbar__button_settings');
 const filtersPopup = document.querySelector('.filters-popup');
@@ -5,27 +7,54 @@ const settingsPopup = document.querySelector('.settings-popup');
 const cartBtn = document.querySelector('.cart');
 const cartPopup = document.querySelector('.cart-popup');
 const productList = document.querySelector('.product-list');
+const filtersItemsWrappers = document.querySelectorAll(
+  '.filters__items-animation-wrapper'
+);
+const filtersCategories = document.querySelectorAll('.filters__category');
+const filters = document.querySelector('.filters');
 
-filtersBtn.addEventListener('click', () => {
+// думаю, это можно написать намного короче, пока что не понимаю, как
+body.addEventListener('click', (e) => {
+  if (
+    !filtersBtn.contains(e.target) &&
+    filtersBtn !== e.target &&
+    !settingsBtn.contains(e.target) &&
+    settingsBtn !== e.target &&
+    !filtersPopup.contains(e.target) &&
+    filtersPopup !== e.target &&
+    !settingsPopup.contains(e.target) &&
+    settingsPopup !== e.target
+  ) {
+    settingsPopup.classList.remove('opened');
+    filtersPopup.classList.remove('opened');
+  }
+});
+
+// Открываем и закрываем поп-ап фильтров
+filtersBtn.addEventListener('click', (e) => {
   settingsPopup.classList.remove('opened');
   filtersPopup.classList.toggle('opened');
 });
 
+// Открываем и закрываем поп-ап настроек
 settingsBtn.addEventListener('click', () => {
   filtersPopup.classList.remove('opened');
   settingsPopup.classList.toggle('opened');
 });
 
+// Открываем и закрываем поп-ап корзины
 cartBtn.addEventListener('click', () => {
   cartPopup.classList.toggle('opened');
 });
 
+// получение рандомного числа
 function getRandomInt(min, max) {
   min = Math.ceil(min);
   max = Math.floor(max);
   return Math.floor(Math.random() * (max - min)) + min;
 }
 
+// Рендерим карточки
 items.forEach((item) => {
   const card = document.createElement('div');
   card.innerHTML = `
@@ -94,4 +123,151 @@ items.forEach((item) => {
   `;
   card.classList.add('product');
   productList.appendChild(card);
+});
+
+// Закрываем и открываем аккордеон
+filtersCategories.forEach((category) => {
+  category.addEventListener('click', (e) => {
+    category.classList.toggle('filters__category_opened');
+    category.nextElementSibling.classList.toggle(
+      'filters__items-animation-wrapper_opened'
+    );
+  });
+});
+
+// filters.addEventListener('click', (e) => {
+//   let filtersCategory = e.target.closest('.filters__category');
+//   if (!filtersCategory) return;
+//   filtersCategory.classList.toggle('filters__category_opened');
+//   filtersCategory.nextElementSibling.classList.toggle(
+//     'filters__items-animation-wrapper_opened'
+//   );
+// });
+
+// получаем все продукты + все елементы productPopup, которые хотим изменить
+const products = document.querySelectorAll('.product');
+const productPopup = document.querySelector('.product-popup-wrapper');
+const productPopupName = productPopup.querySelector('.product-popup__name');
+const productPopupPrice = productPopup.querySelector('.product-popup__price');
+const productPopupImage = productPopup.querySelector('.product-popup__image');
+const productPopupStock = productPopup.querySelector(
+  '.product-popup__stock-amount'
+);
+const productPopupInfo = productPopup.querySelector('.product-popup__info');
+
+// вешаем обработчик клика на каждый продукт
+products.forEach((product) => {
+  // делаем, что б поп-ап не открывался при клике на "добавить в корзину"
+  // или на "добавить в избранное"
+  product.querySelector('.button').addEventListener('click', (e) => {
+    e.stopPropagation();
+  });
+  product
+    .querySelector('.product__favourite-button')
+    .addEventListener('click', (e) => {
+      e.stopPropagation();
+    });
+  // при нажатии на остальные части карточки, делаем что б поп-ап открылся
+  product.addEventListener('click', (e) => {
+    // Выбираем нужные нам елементы с карточки продукта, на которую клинкули
+    const productName = product.querySelector('.product__name');
+    const productStock = product.querySelector('.product__in-stock-amount');
+    const productPrice = product.querySelector('.product__price');
+    const productUrl = product
+      .querySelector('.product__image')
+      .getAttribute('src');
+    const productAddInfo = product.querySelector('.product__additional-info');
+    const cloneInfo = productAddInfo.cloneNode(true);
+
+    // Вставляем в поп-ап ту инфу, которая уже есть в карточке
+    productPopupName.textContent = productName.innerText;
+    productPopupPrice.textContent = '$ ' + productPrice.textContent;
+    productPopupStock.textContent = productStock.textContent;
+    productPopupImage.setAttribute('src', productUrl);
+
+    // Удаление характеристик прошлого товара с поп-апа
+    productPopup.querySelector('.product__additional-info')?.remove();
+    productPopup
+      .querySelectorAll('.product-popup__characteristic')
+      ?.forEach((item) => item.remove());
+
+    // Вставляем елемент с инфой про отзывы и заказы
+    cloneInfo.classList.add('product__additional-info_popup');
+    productPopupInfo.appendChild(cloneInfo);
+
+    // Находим нужный нам айтем в массиве, который пришел с бд по имени
+    const currArrItem = items.find(
+      (item) => item.name === productName.textContent
+    );
+
+    // Строим объект, по которому будем рендерить характеристики
+    // prettier-ignore
+    const props = {
+      'Color': currArrItem.color.join(', '),
+      'Operating System': currArrItem.os,
+      'Chip': currArrItem.chip.name,
+      'Height': currArrItem.size.height,
+      'Width': currArrItem.size.width,
+      'Depth': currArrItem.size.depth,
+      'Weight': currArrItem.size.weight,
+    };
+
+    // Создаем елементы характеристик и вставляем их в поп-ап
+    for (let key in props) {
+      const characteristic = document.createElement('div');
+      characteristic.classList.add('product-popup__characteristic');
+      characteristic.innerHTML = `
+        <span class="product-popup__characteristic-name">${key}:</span>
+        <span class="product-popup__characteristic-value">${props[key]}</span>
+      `;
+      productPopupInfo.appendChild(characteristic);
+    }
+
+    // Показываем поп-ап
+    productPopup.classList.add('opened_grid');
+    // Не разрешаем прокручивать основной сайт
+    body.style.overflow = 'hidden';
+  });
+});
+
+// логика закрытия поп-апа продукта
+productPopup.addEventListener('click', (e) => {
+  if (e.target === productPopup) {
+    productPopup.classList.remove('opened_grid');
+    document.querySelector('body').style.overflow = 'auto';
+  }
+});
+
+// открытие и закрытие фильтров на маленьких экранах
+const mobFiltersBtn = document.querySelector('.filters-bar-item_filters-btn');
+const mobileFiltersPopup = document.querySelector('.mobile-filters-popup');
+const mobileFilters = mobileFiltersPopup.querySelector('.filters');
+
+addEventListener('resize', (event) => {
+  if (
+    window.innerWidth > 940 &&
+    mobileFiltersPopup.classList.contains('mobile-filters-popup_opened')
+  ) {
+    mobileFiltersPopup.classList.remove('mobile-filters-popup_opened');
+    mobileFilters.classList.remove('filters_opened');
+    body.style.overflow = 'auto';
+  }
+});
+
+mobFiltersBtn.addEventListener('click', (e) => {
+  mobileFiltersPopup.classList.add('mobile-filters-popup_opened');
+  body.style.overflow = 'hidden';
+  setTimeout(() => {
+    mobileFilters.classList.add('filters_opened');
+  }, 0);
+});
+
+mobileFiltersPopup.addEventListener('click', (e) => {
+  if (e.target === mobileFiltersPopup) {
+    mobileFilters.classList.remove('filters_opened');
+    setTimeout(() => {
+      mobileFiltersPopup.classList.remove('mobile-filters-popup_opened');
+      body.style.overflow = 'auto';
+    }, 300);
+  }
 });

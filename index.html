@@ -225,7 +225,7 @@
               <p class="filters-bar-item__secondary-text">По популярности</p>
             </div>
           </div>
-          <div class="filters-bar-item">
+          <div class="filters-bar-item filters-bar-item_filters-btn">
             <!-- prettier-ignore -->
             <svg viewBox="0 0 24 24" fill="currentColor" class="filters-bar-item__icon"><path d="M10 17C10 17.5523 10.4477 18 11 18H13C13.5523 18 14 17.5523 14 17C14 16.4477 13.5523 16 13 16H11C10.4477 16 10 16.4477 10 17ZM4 6C3.44772 6 3 6.44772 3 7C3 7.55228 3.44772 8 4 8H20C20.5523 8 21 7.55228 21 7C21 6.44772 20.5523 6 20 6H4ZM6 12C6 12.5523 6.44772 13 7 13H17C17.5523 13 18 12.5523 18 12C18 11.4477 17.5523 11 17 11H7C6.44772 11 6 11.4477 6 12Z"></path></svg>
             <div class="filters-bar-item__text">
@@ -235,6 +235,7 @@
         </div>
         <div class="filters">
           <!-- filters -->
+          <!-- filters__items-animation-wrapper -->
           <div class="filters__category">
             <p class="filters__category-name">Price</p>
             <div class="filters__arrow-wrapper">
@@ -247,6 +248,504 @@
               </svg>
             </div>
           </div>
+          <div class="filters__items-animation-wrapper">
+            <div class="filters__items-wrapper">
+              <div class="filters__textfield">
+                <label for="quantity" class="filters__textfield-label"
+                  >From</label
+                >
+                <input
+                  class="filters__textfield-input"
+                  type="number"
+                  id="quantity"
+                  name="quantity"
+                  min="1"
+                  max="5" />
+              </div>
+              <div class="filters__textfield">
+                <label for="quantity1" class="filters__textfield-label"
+                  >To</label
+                >
+                <input
+                  class="filters__textfield-input"
+                  type="number"
+                  id="quantity1"
+                  name="quantity"
+                  min="1"
+                  max="5" />
+              </div>
+            </div>
+          </div>
+          <div class="filters__category">
+            <p class="filters__category-name">Color</p>
+            <div class="filters__arrow-wrapper">
+              <svg
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                class="filters__arrow-icon">
+                <path
+                  d="M17.2946 9.29462C16.9053 8.90534 16.2743 8.905 15.8846 9.29385L12 13.17L8.11538 9.29385C7.72569 8.905 7.09466 8.90534 6.70538 9.29462C6.31581 9.68419 6.31581 10.3158 6.70538 10.7054L12 16L17.2946 10.7054C17.6842 10.3158 17.6842 9.68419 17.2946 9.29462Z"></path>
+              </svg>
+            </div>
+          </div>
+          <div class="filters__items-animation-wrapper">
+            <div class="filters__items-wrapper">
+              <ul class="filters__items-list filters__items-list_two-columns">
+                <li class="filters__checkbox">
+                  <input
+                    type="checkbox"
+                    class="filters__checkbox-input"
+                    name="policy"
+                    id="red" />
+                  <label
+                    class="custom-checkbox__label filters__checkbox-label"
+                    for="red">
+                    <p>Red</p>
+                  </label>
+                </li>
+                <li class="filters__checkbox">
+                  <input
+                    type="checkbox"
+                    class="filters__checkbox-input"
+                    name="policy"
+                    id="green" />
+                  <label
+                    class="custom-checkbox__label filters__checkbox-label"
+                    for="green">
+                    <p>Green</p>
+                  </label>
+                </li>
+                <li class="filters__checkbox">
+                  <input
+                    type="checkbox"
+                    class="filters__checkbox-input"
+                    name="policy"
+                    id="black" />
+                  <label
+                    class="custom-checkbox__label filters__checkbox-label"
+                    for="black">
+                    <p>Black</p>
+                  </label>
+                </li>
+                <li class="filters__checkbox">
+                  <input
+                    type="checkbox"
+                    class="filters__checkbox-input"
+                    name="policy"
+                    id="white" />
+                  <label
+                    class="custom-checkbox__label filters__checkbox-label"
+                    for="white">
+                    <p>White</p>
+                  </label>
+                </li>
+                <li class="filters__checkbox">
+                  <input
+                    type="checkbox"
+                    class="filters__checkbox-input"
+                    name="policy"
+                    id="blue" />
+                  <label
+                    class="custom-checkbox__label filters__checkbox-label"
+                    for="blue">
+                    <p>Blue</p>
+                  </label>
+                </li>
+                <li class="filters__checkbox">
+                  <input
+                    type="checkbox"
+                    class="filters__checkbox-input"
+                    name="policy"
+                    id="grey" />
+                  <label
+                    class="custom-checkbox__label filters__checkbox-label"
+                    for="grey">
+                    <p>Grey</p>
+                  </label>
+                </li>
+                <li class="filters__checkbox">
+                  <input
+                    type="checkbox"
+                    class="filters__checkbox-input"
+                    name="policy"
+                    id="red" />
+                  <label
+                    class="custom-checkbox__label filters__checkbox-label"
+                    for="red">
+                    <p>Red</p>
+                  </label>
+                </li>
+                <li class="filters__checkbox">
+                  <input
+                    type="checkbox"
+                    class="filters__checkbox-input"
+                    name="policy"
+                    id="Yellow" />
+                  <label
+                    class="custom-checkbox__label filters__checkbox-label"
+                    for="Yellow">
+                    <p>Yellow</p>
+                  </label>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="filters__category">
+            <p class="filters__category-name">Memory</p>
+            <div class="filters__arrow-wrapper">
+              <svg
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                class="filters__arrow-icon">
+                <path
+                  d="M17.2946 9.29462C16.9053 8.90534 16.2743 8.905 15.8846 9.29385L12 13.17L8.11538 9.29385C7.72569 8.905 7.09466 8.90534 6.70538 9.29462C6.31581 9.68419 6.31581 10.3158 6.70538 10.7054L12 16L17.2946 10.7054C17.6842 10.3158 17.6842 9.68419 17.2946 9.29462Z"></path>
+              </svg>
+            </div>
+          </div>
+          <div class="filters__items-animation-wrapper">
+            <div class="filters__items-wrapper">
+              <ul class="filters__items-list filters__items-list_two-columns">
+                <li class="filters__checkbox">
+                  <input
+                    type="checkbox"
+                    class="filters__checkbox-input"
+                    name="policy"
+                    id="32 Gb" />
+                  <label
+                    class="custom-checkbox__label filters__checkbox-label"
+                    for="32 Gb">
+                    <p>32 Gb</p>
+                  </label>
+                </li>
+                <li class="filters__checkbox">
+                  <input
+                    type="checkbox"
+                    class="filters__checkbox-input"
+                    name="policy"
+                    id="64 Gb" />
+                  <label
+                    class="custom-checkbox__label filters__checkbox-label"
+                    for="64 Gb">
+                    <p>64 Gb</p>
+                  </label>
+                </li>
+                <li class="filters__checkbox">
+                  <input
+                    type="checkbox"
+                    class="filters__checkbox-input"
+                    name="policy"
+                    id="128 Gb" />
+                  <label
+                    class="custom-checkbox__label filters__checkbox-label"
+                    for="128 Gb">
+                    <p>128 Gb</p>
+                  </label>
+                </li>
+                <li class="filters__checkbox">
+                  <input
+                    type="checkbox"
+                    class="filters__checkbox-input"
+                    name="policy"
+                    id="256 Gb" />
+                  <label
+                    class="custom-checkbox__label filters__checkbox-label"
+                    for="256 Gb">
+                    <p>256 Gb</p>
+                  </label>
+                </li>
+                <li class="filters__checkbox">
+                  <input
+                    type="checkbox"
+                    class="filters__checkbox-input"
+                    name="policy"
+                    id="512 Gb" />
+                  <label
+                    class="custom-checkbox__label filters__checkbox-label"
+                    for="512 Gb">
+                    <p>512 Gb</p>
+                  </label>
+                </li>
+                <li class="filters__checkbox">
+                  <input
+                    type="checkbox"
+                    class="filters__checkbox-input"
+                    name="policy"
+                    id="1 TB" />
+                  <label
+                    class="custom-checkbox__label filters__checkbox-label"
+                    for="1 TB">
+                    <p>1 TB</p>
+                  </label>
+                </li>
+                <li class="filters__checkbox">
+                  <input
+                    type="checkbox"
+                    class="filters__checkbox-input"
+                    name="policy"
+                    id="2 TB" />
+                  <label
+                    class="custom-checkbox__label filters__checkbox-label"
+                    for="2 TB">
+                    <p>2 TB</p>
+                  </label>
+                </li>
+                <li class="filters__checkbox">
+                  <input
+                    type="checkbox"
+                    class="filters__checkbox-input"
+                    name="policy"
+                    id="4 TB" />
+                  <label
+                    class="custom-checkbox__label filters__checkbox-label"
+                    for="4 TB">
+                    <p>4 TB</p>
+                  </label>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="filters__category">
+            <p class="filters__category-name">OS</p>
+            <div class="filters__arrow-wrapper">
+              <svg
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                class="filters__arrow-icon">
+                <path
+                  d="M17.2946 9.29462C16.9053 8.90534 16.2743 8.905 15.8846 9.29385L12 13.17L8.11538 9.29385C7.72569 8.905 7.09466 8.90534 6.70538 9.29462C6.31581 9.68419 6.31581 10.3158 6.70538 10.7054L12 16L17.2946 10.7054C17.6842 10.3158 17.6842 9.68419 17.2946 9.29462Z"></path>
+              </svg>
+            </div>
+          </div>
+          <div class="filters__items-animation-wrapper">
+            <div class="filters__items-wrapper">
+              <ul class="filters__items-list">
+                <li class="filters__checkbox">
+                  <input
+                    type="checkbox"
+                    class="filters__checkbox-input"
+                    name="policy"
+                    id="IOS" />
+                  <label
+                    class="custom-checkbox__label filters__checkbox-label"
+                    for="IOS">
+                    <p>IOS</p>
+                  </label>
+                </li>
+                <li class="filters__checkbox">
+                  <input
+                    type="checkbox"
+                    class="filters__checkbox-input"
+                    name="policy"
+                    id="Mac OS" />
+                  <label
+                    class="custom-checkbox__label filters__checkbox-label"
+                    for="Mac OS">
+                    <p>Mac OS</p>
+                  </label>
+                </li>
+                <li class="filters__checkbox">
+                  <input
+                    type="checkbox"
+                    class="filters__checkbox-input"
+                    name="policy"
+                    id="tvOS" />
+                  <label
+                    class="custom-checkbox__label filters__checkbox-label"
+                    for="tvOS">
+                    <p>tvOS</p>
+                  </label>
+                </li>
+                <li class="filters__checkbox">
+                  <input
+                    type="checkbox"
+                    class="filters__checkbox-input"
+                    name="policy"
+                    id="Watch OS" />
+                  <label
+                    class="custom-checkbox__label filters__checkbox-label"
+                    for="Watch OS">
+                    <p>Watch OS</p>
+                  </label>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="filters__category">
+            <p class="filters__category-name">Display</p>
+            <div class="filters__arrow-wrapper">
+              <svg
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                class="filters__arrow-icon">
+                <path
+                  d="M17.2946 9.29462C16.9053 8.90534 16.2743 8.905 15.8846 9.29385L12 13.17L8.11538 9.29385C7.72569 8.905 7.09466 8.90534 6.70538 9.29462C6.31581 9.68419 6.31581 10.3158 6.70538 10.7054L12 16L17.2946 10.7054C17.6842 10.3158 17.6842 9.68419 17.2946 9.29462Z"></path>
+              </svg>
+            </div>
+          </div>
+          <div class="filters__items-animation-wrapper">
+            <div class="filters__items-wrapper">
+              <ul class="filters__items-list">
+                <li class="filters__checkbox">
+                  <input
+                    type="checkbox"
+                    class="filters__checkbox-input"
+                    name="policy"
+                    id="2 - 5 inch" />
+                  <label
+                    class="custom-checkbox__label filters__checkbox-label"
+                    for="2 - 5 inch">
+                    <p>2 - 5 inch</p>
+                  </label>
+                </li>
+                <li class="filters__checkbox">
+                  <input
+                    type="checkbox"
+                    class="filters__checkbox-input"
+                    name="policy"
+                    id="5 - 7 inch" />
+                  <label
+                    class="custom-checkbox__label filters__checkbox-label"
+                    for="5 - 7 inch">
+                    <p>5 - 7 inch</p>
+                  </label>
+                </li>
+                <li class="filters__checkbox">
+                  <input
+                    type="checkbox"
+                    class="filters__checkbox-input"
+                    name="policy"
+                    id="7 - 12 inch" />
+                  <label
+                    class="custom-checkbox__label filters__checkbox-label"
+                    for="7 - 12 inch">
+                    <p>7 - 12 inch</p>
+                  </label>
+                </li>
+                <li class="filters__checkbox">
+                  <input
+                    type="checkbox"
+                    class="filters__checkbox-input"
+                    name="policy"
+                    id="12 - 16 inch" />
+                  <label
+                    class="custom-checkbox__label filters__checkbox-label"
+                    for="12 - 16 inch">
+                    <p>12 - 16 inch</p>
+                  </label>
+                </li>
+                <li class="filters__checkbox">
+                  <input
+                    type="checkbox"
+                    class="filters__checkbox-input"
+                    name="policy"
+                    id="+16 inch" />
+                  <label
+                    class="custom-checkbox__label filters__checkbox-label"
+                    for="+16 inch">
+                    <p>+16 inch</p>
+                  </label>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <!-- End of Filters -->
+        <div class="product-list"></div>
+      </main>
+    </div>
+    <div class="product-popup-wrapper">
+      <div class="product-popup">
+        <div class="product-popup__image-wrapper">
+          <img
+            src="img/items/apple-tv.jpeg"
+            alt=""
+            class="product-popup__image" />
+        </div>
+        <div class="product-popup__info-wrapper">
+          <div class="product-popup__info">
+            <div class="product-popup__name">Apple TV Gen. 4 2020</div>
+            <div
+              class="product__additional-info product__additional-info_popup">
+              <!-- prettier-ignore -->
+              <svg class="product__reviews-icon" width="18" height="16" viewBox="0 0 18 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M9.00008 15.7917L7.79175 14.6917C3.50008 10.8 0.666748 8.23333 0.666748 5.08333C0.666748 2.51667 2.68341 0.5 5.25008 0.5C6.70008 0.5 8.09175 1.175 9.00008 2.24167C9.90841 1.175 11.3001 0.5 12.7501 0.5C15.3167 0.5 17.3334 2.51667 17.3334 5.08333C17.3334 8.23333 14.5001 10.8 10.2084 14.7L9.00008 15.7917Z" fill="#F05454"/>
+                  </svg>
+              <div class="product__reviews-info">
+                <p class="product__positive-reviews">
+                  <strong class="product__reviews-percentage">65%</strong>
+                  Positive reviews
+                </p>
+                <p class="product__reviews-average">Above average</p>
+              </div>
+              <div class="product__orders-info">
+                <strong class="product__orders-amount">296</strong>
+                <p class="product__orders-text">orders</p>
+              </div>
+            </div>
+            <div class="product-popup__characteristic">
+              <span class="product-popup__characteristic-name">Color:</span>
+              <span class="product-popup__characteristic-value">Black</span>
+            </div>
+            <div class="product-popup__characteristic">
+              <span class="product-popup__characteristic-name">Color:</span>
+              <span class="product-popup__characteristic-value">Black</span>
+            </div>
+            <div class="product-popup__characteristic">
+              <span class="product-popup__characteristic-name">Color:</span>
+              <span class="product-popup__characteristic-value">Black</span>
+            </div>
+            <div class="product-popup__characteristic">
+              <span class="product-popup__characteristic-name">Color:</span>
+              <span class="product-popup__characteristic-value">Black</span>
+            </div>
+            <div class="product-popup__characteristic">
+              <span class="product-popup__characteristic-name">Color:</span>
+              <span class="product-popup__characteristic-value">Black</span>
+            </div>
+            <div class="product-popup__characteristic">
+              <span class="product-popup__characteristic-name">Color:</span>
+              <span class="product-popup__characteristic-value">Black</span>
+            </div>
+            <div class="product-popup__characteristic">
+              <span class="product-popup__characteristic-name">Color:</span>
+              <span class="product-popup__characteristic-value">Black</span>
+            </div>
+            <div class="product-popup__characteristic">
+              <span class="product-popup__characteristic-name">Color:</span>
+              <span class="product-popup__characteristic-value">Black</span>
+            </div>
+          </div>
+        </div>
+        <div class="product-popup__price-info-wrapper">
+          <div class="product-popup__price-info">
+            <div class="product-popup__price">$ 999,45</div>
+            <p class="product-popup__stock-info">
+              Stock:
+              <strong class="product-popup__stock-amount">45</strong>
+              pcs
+            </p>
+            <button class="button">Add to cart</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="mobile-filters-popup">
+      <div class="filters">
+        <!-- filters -->
+        <!-- filters__items-animation-wrapper -->
+        <div class="filters__category">
+          <p class="filters__category-name">Price</p>
+          <div class="filters__arrow-wrapper">
+            <svg
+              viewBox="0 0 24 24"
+              fill="currentColor"
+              class="filters__arrow-icon">
+              <path
+                d="M17.2946 9.29462C16.9053 8.90534 16.2743 8.905 15.8846 9.29385L12 13.17L8.11538 9.29385C7.72569 8.905 7.09466 8.90534 6.70538 9.29462C6.31581 9.68419 6.31581 10.3158 6.70538 10.7054L12 16L17.2946 10.7054C17.6842 10.3158 17.6842 9.68419 17.2946 9.29462Z"></path>
+            </svg>
+          </div>
+        </div>
+        <div class="filters__items-animation-wrapper">
           <div class="filters__items-wrapper">
             <div class="filters__textfield">
               <label for="quantity" class="filters__textfield-label"
@@ -271,18 +770,20 @@
                 max="5" />
             </div>
           </div>
-          <div class="filters__category">
-            <p class="filters__category-name">Color</p>
-            <div class="filters__arrow-wrapper">
-              <svg
-                viewBox="0 0 24 24"
-                fill="currentColor"
-                class="filters__arrow-icon">
-                <path
-                  d="M17.2946 9.29462C16.9053 8.90534 16.2743 8.905 15.8846 9.29385L12 13.17L8.11538 9.29385C7.72569 8.905 7.09466 8.90534 6.70538 9.29462C6.31581 9.68419 6.31581 10.3158 6.70538 10.7054L12 16L17.2946 10.7054C17.6842 10.3158 17.6842 9.68419 17.2946 9.29462Z"></path>
-              </svg>
-            </div>
+        </div>
+        <div class="filters__category">
+          <p class="filters__category-name">Color</p>
+          <div class="filters__arrow-wrapper">
+            <svg
+              viewBox="0 0 24 24"
+              fill="currentColor"
+              class="filters__arrow-icon">
+              <path
+                d="M17.2946 9.29462C16.9053 8.90534 16.2743 8.905 15.8846 9.29385L12 13.17L8.11538 9.29385C7.72569 8.905 7.09466 8.90534 6.70538 9.29462C6.31581 9.68419 6.31581 10.3158 6.70538 10.7054L12 16L17.2946 10.7054C17.6842 10.3158 17.6842 9.68419 17.2946 9.29462Z"></path>
+            </svg>
           </div>
+        </div>
+        <div class="filters__items-animation-wrapper">
           <div class="filters__items-wrapper">
             <ul class="filters__items-list filters__items-list_two-columns">
               <li class="filters__checkbox">
@@ -383,18 +884,20 @@
               </li>
             </ul>
           </div>
-          <div class="filters__category">
-            <p class="filters__category-name">Memory</p>
-            <div class="filters__arrow-wrapper">
-              <svg
-                viewBox="0 0 24 24"
-                fill="currentColor"
-                class="filters__arrow-icon">
-                <path
-                  d="M17.2946 9.29462C16.9053 8.90534 16.2743 8.905 15.8846 9.29385L12 13.17L8.11538 9.29385C7.72569 8.905 7.09466 8.90534 6.70538 9.29462C6.31581 9.68419 6.31581 10.3158 6.70538 10.7054L12 16L17.2946 10.7054C17.6842 10.3158 17.6842 9.68419 17.2946 9.29462Z"></path>
-              </svg>
-            </div>
+        </div>
+        <div class="filters__category">
+          <p class="filters__category-name">Memory</p>
+          <div class="filters__arrow-wrapper">
+            <svg
+              viewBox="0 0 24 24"
+              fill="currentColor"
+              class="filters__arrow-icon">
+              <path
+                d="M17.2946 9.29462C16.9053 8.90534 16.2743 8.905 15.8846 9.29385L12 13.17L8.11538 9.29385C7.72569 8.905 7.09466 8.90534 6.70538 9.29462C6.31581 9.68419 6.31581 10.3158 6.70538 10.7054L12 16L17.2946 10.7054C17.6842 10.3158 17.6842 9.68419 17.2946 9.29462Z"></path>
+            </svg>
           </div>
+        </div>
+        <div class="filters__items-animation-wrapper">
           <div class="filters__items-wrapper">
             <ul class="filters__items-list filters__items-list_two-columns">
               <li class="filters__checkbox">
@@ -495,18 +998,20 @@
               </li>
             </ul>
           </div>
-          <div class="filters__category">
-            <p class="filters__category-name">OS</p>
-            <div class="filters__arrow-wrapper">
-              <svg
-                viewBox="0 0 24 24"
-                fill="currentColor"
-                class="filters__arrow-icon">
-                <path
-                  d="M17.2946 9.29462C16.9053 8.90534 16.2743 8.905 15.8846 9.29385L12 13.17L8.11538 9.29385C7.72569 8.905 7.09466 8.90534 6.70538 9.29462C6.31581 9.68419 6.31581 10.3158 6.70538 10.7054L12 16L17.2946 10.7054C17.6842 10.3158 17.6842 9.68419 17.2946 9.29462Z"></path>
-              </svg>
-            </div>
+        </div>
+        <div class="filters__category">
+          <p class="filters__category-name">OS</p>
+          <div class="filters__arrow-wrapper">
+            <svg
+              viewBox="0 0 24 24"
+              fill="currentColor"
+              class="filters__arrow-icon">
+              <path
+                d="M17.2946 9.29462C16.9053 8.90534 16.2743 8.905 15.8846 9.29385L12 13.17L8.11538 9.29385C7.72569 8.905 7.09466 8.90534 6.70538 9.29462C6.31581 9.68419 6.31581 10.3158 6.70538 10.7054L12 16L17.2946 10.7054C17.6842 10.3158 17.6842 9.68419 17.2946 9.29462Z"></path>
+            </svg>
           </div>
+        </div>
+        <div class="filters__items-animation-wrapper">
           <div class="filters__items-wrapper">
             <ul class="filters__items-list">
               <li class="filters__checkbox">
@@ -559,18 +1064,20 @@
               </li>
             </ul>
           </div>
-          <div class="filters__category">
-            <p class="filters__category-name">Display</p>
-            <div class="filters__arrow-wrapper">
-              <svg
-                viewBox="0 0 24 24"
-                fill="currentColor"
-                class="filters__arrow-icon">
-                <path
-                  d="M17.2946 9.29462C16.9053 8.90534 16.2743 8.905 15.8846 9.29385L12 13.17L8.11538 9.29385C7.72569 8.905 7.09466 8.90534 6.70538 9.29462C6.31581 9.68419 6.31581 10.3158 6.70538 10.7054L12 16L17.2946 10.7054C17.6842 10.3158 17.6842 9.68419 17.2946 9.29462Z"></path>
-              </svg>
-            </div>
+        </div>
+        <div class="filters__category">
+          <p class="filters__category-name">Display</p>
+          <div class="filters__arrow-wrapper">
+            <svg
+              viewBox="0 0 24 24"
+              fill="currentColor"
+              class="filters__arrow-icon">
+              <path
+                d="M17.2946 9.29462C16.9053 8.90534 16.2743 8.905 15.8846 9.29385L12 13.17L8.11538 9.29385C7.72569 8.905 7.09466 8.90534 6.70538 9.29462C6.31581 9.68419 6.31581 10.3158 6.70538 10.7054L12 16L17.2946 10.7054C17.6842 10.3158 17.6842 9.68419 17.2946 9.29462Z"></path>
+            </svg>
           </div>
+        </div>
+        <div class="filters__items-animation-wrapper">
           <div class="filters__items-wrapper">
             <ul class="filters__items-list">
               <li class="filters__checkbox">
@@ -636,86 +1143,10 @@
             </ul>
           </div>
         </div>
-        <!-- End of Filters -->
-        <div class="product-list"></div>
-      </main>
-
-      <div class="product-popup">
-        <div class="product-popup__image-wrapper">
-          <img
-            src="img/items/apple-tv.jpeg"
-            alt=""
-            class="product-popup__image" />
-        </div>
-        <div class="product-popup__info-wrapper">
-          <div class="product-popup__info">
-            <p class="product-popup__name">Apple TV Gen. 4 2020</p>
-            <div
-              class="product__additional-info product__additional-info_popup">
-              <!-- prettier-ignore -->
-              <svg class="product__reviews-icon" width="18" height="16" viewBox="0 0 18 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M9.00008 15.7917L7.79175 14.6917C3.50008 10.8 0.666748 8.23333 0.666748 5.08333C0.666748 2.51667 2.68341 0.5 5.25008 0.5C6.70008 0.5 8.09175 1.175 9.00008 2.24167C9.90841 1.175 11.3001 0.5 12.7501 0.5C15.3167 0.5 17.3334 2.51667 17.3334 5.08333C17.3334 8.23333 14.5001 10.8 10.2084 14.7L9.00008 15.7917Z" fill="#F05454"/>
-                  </svg>
-              <div class="product__reviews-info">
-                <p class="product__positive-reviews">
-                  <strong class="product__reviews-percentage">65%</strong>
-                  Positive reviews
-                </p>
-                <p class="product__reviews-average">Above average</p>
-              </div>
-              <div class="product__orders-info">
-                <strong class="product__orders-amount">296</strong>
-                <p class="product__orders-text">orders</p>
-              </div>
-            </div>
-            <div class="product-popup__characteristic">
-              <span class="product-popup__characteristic-name">Color:</span>
-              <span class="product-popup__characteristic-value">Black</span>
-            </div>
-            <div class="product-popup__characteristic">
-              <span class="product-popup__characteristic-name">Color:</span>
-              <span class="product-popup__characteristic-value">Black</span>
-            </div>
-            <div class="product-popup__characteristic">
-              <span class="product-popup__characteristic-name">Color:</span>
-              <span class="product-popup__characteristic-value">Black</span>
-            </div>
-            <div class="product-popup__characteristic">
-              <span class="product-popup__characteristic-name">Color:</span>
-              <span class="product-popup__characteristic-value">Black</span>
-            </div>
-            <div class="product-popup__characteristic">
-              <span class="product-popup__characteristic-name">Color:</span>
-              <span class="product-popup__characteristic-value">Black</span>
-            </div>
-            <div class="product-popup__characteristic">
-              <span class="product-popup__characteristic-name">Color:</span>
-              <span class="product-popup__characteristic-value">Black</span>
-            </div>
-            <div class="product-popup__characteristic">
-              <span class="product-popup__characteristic-name">Color:</span>
-              <span class="product-popup__characteristic-value">Black</span>
-            </div>
-            <div class="product-popup__characteristic">
-              <span class="product-popup__characteristic-name">Color:</span>
-              <span class="product-popup__characteristic-value">Black</span>
-            </div>
-          </div>
-        </div>
-        <div class="product-popup__price-info-wrapper">
-          <div class="product-popup__price-info">
-            <div class="product-popup__price">$ 999,45</div>
-            <p class="product-popup__stock-info">
-              Stock:
-              <strong class="product-popup__stock-amount">45</strong>
-              pcs
-            </p>
-            <button class="button">Add to cart</button>
-          </div>
-        </div>
       </div>
     </div>
     <script src="js/items.js"></script>
     <script src="js/script.js"></script>
+    <script src="test.js"></script>
   </body>
 </html>
