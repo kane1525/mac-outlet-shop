@@ -93,6 +93,7 @@ body {
 
 /* Cart popup */
 .cart-popup {
+  min-width: 400px;
   max-width: 440px;
   text-align: center;
   padding-bottom: 22px;
@@ -173,6 +174,7 @@ body {
   justify-content: center;
   color: #fff;
   cursor: pointer;
+  border: none;
 }
 
 .cart-popup-product__icon-wrapper:hover {
@@ -1064,5 +1066,15 @@ body {
 
 .opened_grid {
   display: grid;
+}
+
+.disabled {
+  cursor: default;
+  background-color: #5e64b8;
+}
+
+.disabled:hover {
+  cursor: default;
+  background-color: #5e64b8;
 }
 /* End of visible */

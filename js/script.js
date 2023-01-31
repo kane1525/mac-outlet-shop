@@ -122,6 +122,29 @@ function renderCard(item) {
         </div>
       </div>
   `;
+  const itemId = item.id;
+  const addToCartBtn = card.querySelector('.button');
+  addToCartBtn.addEventListener('click', () => {
+    const storageArr = JSON.parse(localStorage.getItem('cartItems'));
+    const cardsWrapper = document.querySelector('.cart-popup__products');
+    console.log(storageArr);
+    const storageItem = storageArr.find(
+      (item) => Number(item.id) === Number(itemId)
+    );
+    if (storageItem) {
+      if (storageItem.amount < 4) {
+        storageItem.amount++;
+        localStorage.setItem('cartItems', JSON.stringify(storageArr));
+        cardsWrapper.innerHTML = '';
+        renderCartItems();
+      }
+    } else {
+      storageArr.push({ id: itemId, amount: 1 });
+      localStorage.setItem('cartItems', JSON.stringify(storageArr));
+      cardsWrapper.innerHTML = '';
+      renderCartItems();
+    }
+  });
   card.classList.add('product');
   productClickHandler(card);
   productList.appendChild(card);
@@ -452,3 +475,147 @@ function handleSearchInput(e) {
 }
 
 searchInput.addEventListener('input', handleSearchInput);
+
+// Логика корзины
+const itemsContainer = document.querySelector('.cart-popup__products');
+
+const cart = {
+  items: [],
+};
+
+const localStorageArr = [];
+
+const renderCartArr = items.map((item) => {
+  const res = {};
+  res.id = item.id;
+  res.url = 'img/' + item.imgUrl;
+  res.name = item.name;
+  res.price = item.price;
+  res.amount = 0;
+  return res;
+});
+
+function renderCartItem(item) {
+  const cartItem = document.createElement('li');
+  cartItem.classList.add('cart-popup-product');
+  cartItem.setAttribute('data-id', `${item.id}`);
+  cartItem.innerHTML = `
+      <img
+      src=${item.url}
+      alt=""
+      class="cart-popup-product__image" />
+    <div class="cart-popup-product__info">
+      <p class="cart-popup-product__name">${item.name}</p>
+      <p class="cart-popup-product__price">${'$' + item.price}</p>
+    </div>
+    <div class="cart-popup-product__controls">
+      <button class="cart-popup-product__icon-wrapper">
+        <div class="cart-popup-product__minus-icon">&lt;</div>
+      </button>
+      <div class="cart-popup-product__amount">${item.amount}</div>
+      <button class="cart-popup-product__icon-wrapper">
+        <div class="cart-popup-product__plus-icon">&gt;</div>
+      </button>
+    </div>
+    <div class="cart-popup-product__delete">
+      <div class="cart-popup-product__delete-icon">X</div>
+    </div>
+  `;
+
+  const plusButton = cartItem.querySelector(
+    '.cart-popup-product__plus-icon'
+  ).parentElement;
+  const minusButton = cartItem.querySelector(
+    '.cart-popup-product__minus-icon'
+  ).parentElement;
+  const deleteButton = cartItem.querySelector('.cart-popup-product__delete');
+  if (item.amount === 4) {
+    plusButton.disabled = true;
+    plusButton.classList.add('disabled');
+  }
+  if (item.amount === 1) {
+    minusButton.disabled = true;
+    minusButton.classList.add('disabled');
+  }
+  // минусуем по клику
+  cartItem
+    .querySelector('.cart-popup-product__minus-icon')
+    .parentElement.addEventListener('click', function () {
+      const card = this.closest('.cart-popup-product');
+      const cardsWrapper = document.querySelector('.cart-popup__products');
+      const itemId = card.getAttribute('data-id');
+      const storageArr = JSON.parse(localStorage.getItem('cartItems'));
+      const storageItem = storageArr.find(
+        (item) => Number(item.id) === Number(itemId)
+      );
+      if (storageItem.amount > 1) {
+        storageItem.amount--;
+        localStorage.setItem('cartItems', JSON.stringify(storageArr));
+        cardsWrapper.innerHTML = '';
+        renderCartItems();
+      }
+    });
+
+  // плюсуем по клику
+  cartItem
+    .querySelector('.cart-popup-product__plus-icon')
+    .parentElement.addEventListener('click', function () {
+      const card = this.closest('.cart-popup-product');
+      const cardsWrapper = document.querySelector('.cart-popup__products');
+      const itemId = card.getAttribute('data-id');
+      const storageArr = JSON.parse(localStorage.getItem('cartItems'));
+      const storageItem = storageArr.find(
+        (item) => Number(item.id) === Number(itemId)
+      );
+      if (storageItem.amount < 4) {
+        storageItem.amount++;
+        localStorage.setItem('cartItems', JSON.stringify(storageArr));
+        cardsWrapper.innerHTML = '';
+        renderCartItems();
+      }
+    });
+
+  // удаляем по клику
+  deleteButton.addEventListener('click', function () {
+    const card = this.closest('.cart-popup-product');
+    const cardsWrapper = document.querySelector('.cart-popup__products');
+    const itemId = card.getAttribute('data-id');
+    const storageArr = JSON.parse(localStorage.getItem('cartItems'));
+    const storageItem = storageArr.find(
+      (item) => Number(item.id) === Number(itemId)
+    );
+    const res = storageArr.filter((item) => Number(item.id) !== Number(itemId));
+    console.log(res);
+    localStorage.setItem('cartItems', JSON.stringify(res));
+    cardsWrapper.innerHTML = '';
+    renderCartItems();
+  });
+  itemsContainer.appendChild(cartItem);
+}
+
+function renderCartItems() {
+  const storageArr = JSON.parse(localStorage.getItem('cartItems'));
+  const renderArr = [];
+
+  storageArr.forEach((item) => {
+    renderArr.push(renderCartArr.find((i) => i.id === item.id));
+  });
+
+  renderArr.forEach((item) => {
+    const i = storageArr.find((i) => i.id === item.id);
+    item.amount = i.amount;
+  });
+  renderArr.forEach(renderCartItem);
+  const sum = renderArr.reduce((accum, next) => {
+    return (accum += next.amount * next.price);
+  }, 0);
+  document.querySelector('.cart-popup__price').textContent = sum;
+
+  const totalItems = renderArr.reduce((accum, next) => {
+    return (accum += next.amount);
+  }, 0);
+  document.querySelector('.cart-popup__amount').textContent = totalItems;
+  document.querySelector('.cart__counter').textContent = totalItems;
+}
+
+renderCartItems();
