@@ -125,7 +125,7 @@ function renderCard(item) {
   const itemId = item.id;
   const addToCartBtn = card.querySelector('.button');
   addToCartBtn.addEventListener('click', () => {
-    const storageArr = JSON.parse(localStorage.getItem('cartItems'));
+    const storageArr = JSON.parse(localStorage.getItem('cartItems')) || [];
     const cardsWrapper = document.querySelector('.cart-popup__products');
     console.log(storageArr);
     const storageItem = storageArr.find(
@@ -544,7 +544,7 @@ function renderCartItem(item) {
       const card = this.closest('.cart-popup-product');
       const cardsWrapper = document.querySelector('.cart-popup__products');
       const itemId = card.getAttribute('data-id');
-      const storageArr = JSON.parse(localStorage.getItem('cartItems'));
+      const storageArr = JSON.parse(localStorage.getItem('cartItems')) || [];
       const storageItem = storageArr.find(
         (item) => Number(item.id) === Number(itemId)
       );
@@ -563,7 +563,7 @@ function renderCartItem(item) {
       const card = this.closest('.cart-popup-product');
       const cardsWrapper = document.querySelector('.cart-popup__products');
       const itemId = card.getAttribute('data-id');
-      const storageArr = JSON.parse(localStorage.getItem('cartItems'));
+      const storageArr = JSON.parse(localStorage.getItem('cartItems')) || [];
       const storageItem = storageArr.find(
         (item) => Number(item.id) === Number(itemId)
       );
@@ -580,7 +580,7 @@ function renderCartItem(item) {
     const card = this.closest('.cart-popup-product');
     const cardsWrapper = document.querySelector('.cart-popup__products');
     const itemId = card.getAttribute('data-id');
-    const storageArr = JSON.parse(localStorage.getItem('cartItems'));
+    const storageArr = JSON.parse(localStorage.getItem('cartItems')) || [];
     const storageItem = storageArr.find(
       (item) => Number(item.id) === Number(itemId)
     );
@@ -594,7 +594,7 @@ function renderCartItem(item) {
 }
 
 function renderCartItems() {
-  const storageArr = JSON.parse(localStorage.getItem('cartItems'));
+  const storageArr = JSON.parse(localStorage.getItem('cartItems')) || [];
   const renderArr = [];
 
   storageArr.forEach((item) => {
